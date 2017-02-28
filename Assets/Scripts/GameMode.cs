@@ -30,7 +30,6 @@ public class GameMode : MonoBehaviour {
 			if (CurrnetWave <= CountWave - 1) {
 				if (timeUnit <= 0.0f) {
 					if (key <= Waves [CurrnetWave].Units.Count - 1) {
-						Debug.Log ("Spawn Unit !");
 						GamesUnits.Add ((GameObject)Instantiate (Waves [CurrnetWave].Units [key], Areas [0].transform.position, Quaternion.identity));
 						key++;
 						timeUnit = 1.0f;

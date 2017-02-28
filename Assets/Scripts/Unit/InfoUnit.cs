@@ -10,6 +10,7 @@ public class InfoUnit : MonoBehaviour {
 	private int key = 0;
 	private GameMode gameMode;
 	private bool move = true;
+
 	// Use this for initialization
 	void Start () {
 		gameMode = GameObject.FindGameObjectWithTag ("GameMode").GetComponent<GameMode> ();
