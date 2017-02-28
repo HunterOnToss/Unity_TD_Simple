@@ -10,6 +10,7 @@ public class InfoTower : MonoBehaviour {
 	private bool attack = false;
 	private GameObject target;
 	private GameMode gameMode;
+	private GameObject bullet;
 
 	// Use this for initialization
 	void Start () {
@@ -24,7 +25,10 @@ public class InfoTower : MonoBehaviour {
 			if (Vector3.Distance (transform.position, target.transform.position) <= Value.Range) {
 				if (reloads <= 0.0f) {
 
-					Debug.Log ("Bullet Spawn");
+					bullet = (GameObject)Instantiate (Value.BulletPref, Value.BulletSpawn.transform.position, Quaternion.identity);
+					bullet.GetComponent<Bullet> ().Target = target;
+					bullet.GetComponent<Bullet> ().Damage = Value.Damage;
+					bullet.GetComponent<Bullet> ().Speed = Value.bulletSpeed;
 					Debug.Log (target.name);
 
 					reloads = Value.attackSpeed;
