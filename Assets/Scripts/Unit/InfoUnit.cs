@@ -21,7 +21,7 @@ public class InfoUnit : MonoBehaviour {
 
 		if (move) {
 			if (key <= gameMode.Areas.Count - 1) {
-				if(Vector3.Distance(transform.position, gameMode.Areas[key].transform.position) > 0.0f) {
+				if (Vector3.Distance (transform.position, gameMode.Areas [key].transform.position) > 0.0f) {
 					transform.position = Vector3.MoveTowards (transform.position, gameMode.Areas [key].transform.position, Value.speed * Time.deltaTime);
 				} else {
 					key++;
@@ -29,6 +29,16 @@ public class InfoUnit : MonoBehaviour {
 			} else {
 				move = false;
 			}	
+		} else {
+			gameMode.LosesUnits++; 
+			gameMode.GamesUnits.Remove (transform.gameObject);
+			Destroy (transform.gameObject);
+		}
+
+		if (Value.Health <= 0) {
+			gameMode.Diamonds += Value.Diamonds;
+			gameMode.GamesUnits.Remove (transform.gameObject);
+			Destroy (transform.gameObject);
 		}
 	}
 }
