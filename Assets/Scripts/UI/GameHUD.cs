@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameHUD : MonoBehaviour {
 
+	public GUISkin Skin;
 	public RawImage DiamondsIcon;
 	public Text DiamondsText;
 	public RawImage LosesUnits;

@@ -9,10 +9,17 @@ public class InfoUnit : MonoBehaviour {
 
 	private int key = 0;
 	private GameMode gameMode;
+
+	private GameHUD gameHUD;
 	private bool move = true;
+
+	private Vector3 screenPosition;
+	private Rect backgroundRect, colorRect;
 
 	// Use this for initialization
 	void Start () {
+//		Value.Health = Value.MaximumHealth;
+		gameHUD = GameObject.FindGameObjectWithTag ("GameMode").GetComponent<GameHUD> ();
 		gameMode = GameObject.FindGameObjectWithTag ("GameMode").GetComponent<GameMode> ();
 	}
 	
@@ -40,5 +47,15 @@ public class InfoUnit : MonoBehaviour {
 			gameMode.GamesUnits.Remove (transform.gameObject);
 			Destroy (transform.gameObject);
 		}
+	}
+
+	void OnGUI () {
+		screenPosition = Camera.main.WorldToScreenPoint (transform.position);
+		backgroundRect = new Rect (screenPosition.x - 25, Screen.height - (screenPosition.y + 20), 50, 10);
+		colorRect = new Rect(screenPosition.x -  25, Screen.height - (screenPosition.y + 20 ), 50 * (Value.Health / Value.MaximumHealth), 10);
+
+		GUI.DrawTexture (backgroundRect, gameHUD.Skin.GetStyle ("HealthBar").normal.background);
+		GUI.DrawTexture (colorRect, gameHUD.Skin.GetStyle ("HealthBar").active.background);
+		GUI.DrawTexture (backgroundRect, gameHUD.Skin.GetStyle ("HealthBar").hover.background);
 	}
 }
