@@ -6,11 +6,13 @@ using UnityEngine;
 public class Unit {
 	
 	public string name;
+
 	public float MaximumHealth;
 	public float Health;
+	public float Regeneration;
+	public float speed = 1f;
 
-	public int armor;
-	public float speed = 0.7f;
+	public int armor = 0;
 	public int Diamonds = 1;
 
 }
