@@ -5,6 +5,8 @@ using UnityEngine;
 public class UnitController : MonoBehaviour {
 
 	public BaseUnit GameUnit = new SimpleUnit ();
+	public GameObject Zones;
+
 	GameObject test;
 	Vector3 point;
 	Vector3 distance;
@@ -35,4 +37,5 @@ public class UnitController : MonoBehaviour {
 		Debug.Log ("I am die");
 		Destroy (transform.gameObject);
 	}
+
 }
