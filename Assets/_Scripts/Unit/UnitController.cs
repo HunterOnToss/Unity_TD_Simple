@@ -5,37 +5,46 @@ using UnityEngine;
 public class UnitController : MonoBehaviour {
 
 	public BaseUnit GameUnit = new SimpleUnit ();
-	public GameObject Zones;
+	public List<GameObject> Zones = new List<GameObject> ();
 
-	GameObject test;
-	Vector3 point;
-	Vector3 distance;
-
-	void Start () {
-		Init ();
-	}
+	private int CurrentZone = 1;
 
 	void Update () {
-		
-		point = point + distance;
-		test.transform.position = point;
-		this.Move (test);
+
+		if (CurrentZone < Zones.Count) {
+			MoveToZone (Zones [CurrentZone]);
+		} else {
+			Die ();
+		}
 		
 	}
 
-	void Init() {
-		test = new GameObject ();
-		point = new Vector3 (1, 0, 0);
-		distance = new Vector3 (1, 0, 0);
-	}
-
-	void Move (GameObject _point) {
+	public void Move (GameObject _point) {
 		transform.position = Vector3.MoveTowards (transform.position, _point.transform.position, this.GameUnit.speed * Time.deltaTime);
 	}
 
 	void Die () {
 		Debug.Log ("I am die");
 		Destroy (transform.gameObject);
+
 	}
 
+	public void MoveToZone( GameObject zone) {
+
+
+		if (CurrentZone <= Zones.Count ) {
+
+			float res = Vector3.Distance (this.transform.position, zone.transform.position);
+
+			if (res >= 2.0f) {
+				Move (zone);
+
+			} else {
+				CurrentZone++;
+			}
+		} else {
+			Die ();
+		}
+
+	}
 }

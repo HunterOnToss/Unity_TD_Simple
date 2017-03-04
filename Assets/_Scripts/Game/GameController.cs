@@ -4,17 +4,36 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+	public Wave Waves;
 	public List<GameObject> Zones = new List<GameObject> ();
+	public List<GameObject> Units = new List<GameObject>();
 
+	public float TimeSpawnNextUnit = 2.0f;
+
+	private WaveController script;
+	private UnitController y;
 
 	void Start () {
-		foreach (GameObject obj in Zones) {
-			print (obj);
-		}
-	}
-	
 
-	void Update () {
-		
+		script = (WaveController)gameObject.GetComponentInParent<WaveController> ();
+
+
 	}
+
+	void LateUpdate () {
+		
+		Spawn();
+
+	}
+
+	void Spawn() {
+
+		foreach (GameObject obj in script.UnitsOnMaps) {
+			
+			UnitController control = obj.GetComponent<UnitController> ();
+			control.Zones = Zones;
+		}	
+
+	}
+
 }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 [System.Serializable]
 public class Wave {
-	public string name;
-	public List<GameObject> Units = new List<GameObject> ();
+
+	public string NameWave;
+	public int CountUnitInWave;
+	public List <GameObject> Units;
+
 }
