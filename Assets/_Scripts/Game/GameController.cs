@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
 	void Start () {
 
 		script = (WaveController)gameObject.GetComponentInParent<WaveController> ();
+		script.target = Zones [0];
 
 
 	}
