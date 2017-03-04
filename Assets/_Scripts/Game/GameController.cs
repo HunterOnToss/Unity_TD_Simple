@@ -29,7 +29,6 @@ public class GameController : MonoBehaviour {
 	void Spawn() {
 
 		foreach (GameObject obj in script.UnitsOnMaps) {
-			
 			UnitController control = obj.GetComponent<UnitController> ();
 			control.Zones = Zones;
 		}	

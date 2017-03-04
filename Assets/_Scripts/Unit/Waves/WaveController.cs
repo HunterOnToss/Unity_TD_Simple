@@ -16,6 +16,10 @@ public class WaveController : MonoBehaviour {
 		InitWave ();
 	}
 
+	void LateUpdate(){
+		CheckFinishMove ();
+	}
+
 	void InitWave() {
 
 		if (CurrentNumberSpawnWave <= MaxSpawnWave){
@@ -39,6 +43,18 @@ public class WaveController : MonoBehaviour {
 			}
 		} 
 
+
+	}
+
+	void CheckFinishMove() {
+
+		foreach (GameObject obj in UnitsOnMaps.ToArray()) {
+			UnitController control = obj.GetComponent<UnitController> ();
+			if (control.FinishMove) {
+				UnitsOnMaps.Remove (obj);
+				control.Die ();
+			}
+		}
 
 	}
 		

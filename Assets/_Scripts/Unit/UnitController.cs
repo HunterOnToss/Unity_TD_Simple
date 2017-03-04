@@ -6,15 +6,17 @@ public class UnitController : MonoBehaviour {
 
 	public BaseUnit GameUnit = new SimpleUnit ();
 	public List<GameObject> Zones = new List<GameObject> ();
+	public bool FinishMove = false;
 
 	private int CurrentZone = 1;
 
 	void Update () {
 
 		if (CurrentZone < Zones.Count) {
+			Debug.Log (CurrentZone);
 			MoveToZone (Zones [CurrentZone]);
 		} else {
-			Die ();
+			FinishMove = true;
 		}
 		
 	}
@@ -23,16 +25,13 @@ public class UnitController : MonoBehaviour {
 		transform.position = Vector3.MoveTowards (transform.position, _point.transform.position, this.GameUnit.speed * Time.deltaTime);
 	}
 
-	void Die () {
+	public void Die () {
 		Debug.Log ("I am die");
 		Destroy (transform.gameObject);
 
 	}
 
 	public void MoveToZone( GameObject zone) {
-
-
-		if (CurrentZone <= Zones.Count ) {
 
 			float res = Vector3.Distance (this.transform.position, zone.transform.position);
 
@@ -42,9 +41,6 @@ public class UnitController : MonoBehaviour {
 			} else {
 				CurrentZone++;
 			}
-		} else {
-			Die ();
-		}
 
 	}
 }
