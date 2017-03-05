@@ -5,7 +5,13 @@ using UnityEngine;
 public class TowerController : MonoBehaviour {
 
 
-	public Tower MyTower = new Tower ();
+	public Tower myTower = new Tower ();
+
+	public float reload;
+	public int attack;
+	public GameObject target;
+	public GameObject bullet;
+	public GameObject gameController;
 
 	// Use this for initialization
 	void Start () {
@@ -16,4 +22,5 @@ public class TowerController : MonoBehaviour {
 	void Update () {
 		
 	}
+
 }
