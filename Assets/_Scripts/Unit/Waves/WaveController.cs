@@ -33,7 +33,7 @@ public class WaveController : MonoBehaviour {
 						UnitsOnMaps.Add (temp);
 						y += 0.5f;
 					}
-					z += 1.5f;
+					z += 2.5f;
 					y = 0;
 
 				}
