@@ -6,9 +6,12 @@ public class UnitController : MonoBehaviour {
 
 	public BaseUnit GameUnit = new SimpleUnit ();
 	public List<GameObject> Zones = new List<GameObject> ();
+
 	public bool FinishMove = false;
 
 	private int CurrentZone = 1;
+
+
 
 	void Update () {
 
@@ -18,7 +21,11 @@ public class UnitController : MonoBehaviour {
 		} else {
 			FinishMove = true;
 		}
-		
+
+		if (GameUnit.health < 0) {
+			FinishMove = true;
+		}
+
 	}
 
 	public void Move (GameObject _point) {

@@ -11,7 +11,7 @@ public class Tower {
 	public float attackSpeed = 1;
 	public float bulletSpeed = 1;
 	public float Range = 5;
-	public Bullet bullet;
+	public GameObject bullet;
 	public GameObject spawnBullet;
 
 }
