@@ -26,14 +26,16 @@ public class WaveController : MonoBehaviour {
 			if (NextSpawnTime <= 0) {
 
 				float y = 0;
+				float z = 0;
 				foreach (GameObject obj in NewWave.Units) {
 					for (int i = 0; i < NewWave.CountUnitInWave; i++) {
-						GameObject temp = Instantiate (obj, new Vector3 (i + y, 0, 0) + target.transform.position, Quaternion.identity);
+						GameObject temp = Instantiate (obj, new Vector3 (i + y, 0, z) + target.transform.position, Quaternion.identity);
 						UnitsOnMaps.Add (temp);
 						y += 0.5f;
 					}
-
+					z += 1.5f;
 					y = 0;
+
 				}
 
 				CurrentNumberSpawnWave++;
