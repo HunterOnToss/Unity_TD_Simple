@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 15c36a52e6edf42b78af40ff7cb2f506
+timeCreated: 1489734966
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: a_AssuanTitulStrDst
+  fontNames:
+  - a_AssuanTitulStrDst
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
