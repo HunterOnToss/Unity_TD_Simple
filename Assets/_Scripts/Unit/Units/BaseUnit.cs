@@ -8,8 +8,8 @@ public class BaseUnit {
 
 	public string name = "Base Unit";
 
-	public int health = 10;
-	public int maximumHealth = 10;
+	public float health = 10;
+	public float maximumHealth = 10;
 	public int armor = 0;
 	public int regeneration = 0;
 

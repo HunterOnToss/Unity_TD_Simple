@@ -11,6 +11,7 @@ public class GameHUD : MonoBehaviour {
 	public RawImage losesUnits;
 	public Text losesUnitsText;
 
+	public GUISkin skin;
 	private GameController gameController;
 
 	void Start() {
