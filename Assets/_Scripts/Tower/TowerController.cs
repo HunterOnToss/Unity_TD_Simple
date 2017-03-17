@@ -13,33 +13,59 @@ public class TowerController : MonoBehaviour {
 	private GameObject bullet;
 	private GameController gameController;
 
-	// Use this for initialization
-	void Start () {
+	private GameObject currentTarger;
+
+
+	void Start () 
+	{
 		gameController = (GameController)GameObject.FindGameObjectWithTag ("GameMode").GetComponent<GameController>();
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 
-		if (gameController.waveController.UnitsOnMaps != null) {
-			
-			foreach (var obj in gameController.waveController.UnitsOnMaps) {
-						
-					if (reload <= 0.0f) { 
-						if (Vector3.Distance (transform.position, obj.transform.position) <= myTower.Range) {
-							bullet = (GameObject)Instantiate (myTower.bullet, myTower.spawnBullet.transform.position, Quaternion.identity);
-							bullet.GetComponent<Bullet> ().Target = obj;
-							bullet.GetComponent<Bullet> ().damage = myTower.damage;
-							bullet.GetComponent<Bullet> ().speed = myTower.bulletSpeed;
+		if (gameController.waveController.UnitsOnMaps != null) 
+		{
+			if (reload <= 0.0f) 
+			{
 
-							reload = myTower.attackSpeed;
+				currentTarger = FindTarget ();
 
-						}
-					} else {
-						reload -= Time.deltaTime;
-					}
-				}
+				if (currentTarger && Vector3.Distance (transform.position, currentTarger.transform.position) <= myTower.Range) 
+				{
+					StrikeTarget (currentTarger);
+				} 
+
+			}
+			else 
+			{
+				reload -= Time.deltaTime;
+			}
 		}
+	}
+
+	GameObject FindTarget() {
+
+		foreach (GameObject obj in gameController.waveController.UnitsOnMaps) 
+		{
+
+			if (Vector3.Distance (transform.position, obj.transform.position) <= myTower.Range) 
+			{
+				return obj;
+			}
+
+		}
+
+		return null;
+	}
+
+	void StrikeTarget(GameObject obj) 
+	{
+		bullet = (GameObject)Instantiate (myTower.bullet, myTower.spawnBullet.transform.position, Quaternion.identity);
+		bullet.GetComponent<Bullet> ().Target = obj;
+		bullet.GetComponent<Bullet> ().damage = myTower.damage;
+		bullet.GetComponent<Bullet> ().speed = myTower.bulletSpeed;
+
+		reload = myTower.attackSpeed;
 	}
 
 }
