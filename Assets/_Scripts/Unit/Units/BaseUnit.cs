@@ -13,6 +13,8 @@ public class BaseUnit {
 	public int armor = 0;
 	public int regeneration = 0;
 
+	public int gold = 1;
+
 
 	public float speed = 1;
 

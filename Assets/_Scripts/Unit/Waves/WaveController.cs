@@ -9,8 +9,14 @@ public class WaveController : MonoBehaviour {
 	public int MaxSpawnWave = 2;
 	public int CurrentNumberSpawnWave = 0;
 	public GameObject target;
+	public int countDieUnits = 0;
 
 	public List<GameObject> UnitsOnMaps = new List<GameObject>();
+	private GameController gameController;
+
+	void Start() {
+		gameController = (GameController)gameObject.GetComponent<GameController> ();
+	}
 
 	void Update() {
 		InitWave ();
@@ -52,7 +58,16 @@ public class WaveController : MonoBehaviour {
 
 		foreach (GameObject obj in UnitsOnMaps.ToArray()) {
 			UnitController control = obj.GetComponent<UnitController> ();
-			if (control.FinishMove) {
+			if (control.FinishMove || control.isDie) {
+				if (control.isDie) { 
+					countDieUnits++;
+					gameController.gold += control.GameUnit.gold;
+				}
+
+				if (control.FinishMove) {
+					gameController.losesUnits++;
+				}
+
 				UnitsOnMaps.Remove (obj);
 				control.Die ();
 			}

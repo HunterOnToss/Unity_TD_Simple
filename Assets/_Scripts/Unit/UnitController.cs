@@ -8,22 +8,19 @@ public class UnitController : MonoBehaviour {
 	public List<GameObject> Zones = new List<GameObject> ();
 
 	public bool FinishMove = false;
-
+	public bool isDie = false;
 	private int CurrentZone = 1;
-
-
 
 	void Update () {
 
 		if (CurrentZone < Zones.Count) {
-			Debug.Log (CurrentZone);
 			MoveToZone (Zones [CurrentZone]);
 		} else {
 			FinishMove = true;
 		}
 
 		if (GameUnit.health < 0) {
-			FinishMove = true;
+			isDie = true;
 		}
 
 	}
@@ -33,7 +30,6 @@ public class UnitController : MonoBehaviour {
 	}
 
 	public void Die () {
-		Debug.Log ("I am die");
 		Destroy (transform.gameObject);
 
 	}
@@ -50,4 +46,5 @@ public class UnitController : MonoBehaviour {
 			}
 
 	}
+
 }

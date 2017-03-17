@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-//	public Wave Waves;
-//	public List<GameObject> Units = new List<GameObject>();
-	public List<GameObject> Zones = new List<GameObject> ();
+	public int gold = 0;
+	public int losesUnits = 0;
 
+	public List<GameObject> Zones = new List<GameObject> ();
+	public float TimeSpawnNextUnit = 2.0f;
 	public WaveController waveController;
 
-	public float TimeSpawnNextUnit = 2.0f;
-	private UnitController y;
-
 	void Start () {
-		
-		waveController = (WaveController)gameObject.GetComponentInParent<WaveController> ();
+		waveController = (WaveController)gameObject.GetComponent<WaveController> ();
 		waveController.target = Zones [0];
-
 	}
 
 	void LateUpdate () {

@@ -22,10 +22,8 @@ public class TowerController : MonoBehaviour {
 	void Update () {
 
 		if (gameController.waveController.UnitsOnMaps != null) {
-
-
-
-				foreach (var obj in gameController.waveController.UnitsOnMaps) {
+			
+			foreach (var obj in gameController.waveController.UnitsOnMaps) {
 						
 					if (reload <= 0.0f) { 
 						if (Vector3.Distance (transform.position, obj.transform.position) <= myTower.Range) {
