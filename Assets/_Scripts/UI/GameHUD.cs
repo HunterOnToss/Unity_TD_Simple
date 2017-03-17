@@ -23,27 +23,30 @@ public class GameHUD : MonoBehaviour {
 	public Text textDamage;
 	public GameObject armorPanel;
 	public Text textArmor;
-
 	private bool isUpdate;
+
+	//controll
 	private GameController gameController;
-//	private TowerController towerController; 
-//	private UnitController unitController;
+	private TowerController towerController; 
+	private UnitController unitController;
+
+
 
 	void Start() 
 	{
 		gameController = transform.GetComponent<GameController> ();
-//		towerController = currentTargetSelected.GetComponent<TowerController> ();
-//		unitController = currentTargetSelected.GetComponent<UnitController> ();
-
 	}
 
 	void LateUpdate() 
 	{
+		
 		goldText.text = gameController.gold.ToString();
 		losesUnitsText.text = gameController.losesUnits.ToString();
 
 		if (currentTargetSelected != null) 
 		{
+			towerController = currentTargetSelected.GetComponent<TowerController> ();
+			unitController = currentTargetSelected.GetComponent<UnitController> ();
 			isUpdate = true;
 			UpdatePanel ();
 
@@ -54,10 +57,10 @@ public class GameHUD : MonoBehaviour {
 				switch (currentTargetSelected.tag) 
 				{
 				case ("Tower"):
-					currentTargetSelected.GetComponent<TowerController> ().circleSelect.SetActive (false);
+					towerController.circleSelect.SetActive (false);
 					break;
 				case("Unit"):
-					currentTargetSelected.GetComponent<UnitController> ().circleSelect.SetActive (false); 
+					unitController.circleSelect.SetActive (false); 
 					break;
 
 				}
@@ -105,11 +108,11 @@ public class GameHUD : MonoBehaviour {
 		switch(currentTargetSelected.tag) 
 		{
 		case "Tower":
-			currentTargetSelected.GetComponent<TowerController> ().circleSelect.SetActive(false);
+			towerController.circleSelect.SetActive(false);
 			break;
 
 		case "Unit":
-			currentTargetSelected.GetComponent<UnitController> ().circleSelect.SetActive(false);
+			unitController.circleSelect.SetActive(false);
 			break;
 
 		default:
@@ -123,11 +126,11 @@ public class GameHUD : MonoBehaviour {
 		switch(currentTargetSelected.tag) 
 		{
 		case "Tower":
-			currentTargetSelected.GetComponent<TowerController> ().UpdateInfoAboutTower();
+			towerController.UpdateInfoAboutTower();
 			break;
 
 		case "Unit":
-			currentTargetSelected.GetComponent<UnitController> ().UpdateInfoAboutUnit ();
+			unitController.UpdateInfoAboutUnit ();
 			break;
 
 		default:
