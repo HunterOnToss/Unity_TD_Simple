@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class UnitController : MonoBehaviour {
 
-	public BaseUnit GameUnit = new SimpleUnit ();
+	public GameObject circleSelect;
+	public BaseUnit unitOnTheMap = new SimpleUnit ();
 	public List<GameObject> Zones = new List<GameObject> ();
 
 	public bool FinishMove = false;
@@ -28,7 +29,7 @@ public class UnitController : MonoBehaviour {
 			FinishMove = true;
 		}
 
-		if (GameUnit.health < 0) {
+		if (unitOnTheMap.health <= 0) {
 			isDie = true;
 		}
 
@@ -41,7 +42,7 @@ public class UnitController : MonoBehaviour {
 
 		screenPos = Camera.main.WorldToScreenPoint (transform.position);
 		backgroundHelthBarRect = new Rect (screenPos.x - 25, Screen.height - (screenPos.y + 20), _width, _height);
-		colorHelthBarRect = new Rect (screenPos.x - 25, Screen.height - (screenPos.y + 20), _width * (GameUnit.health / GameUnit.maximumHealth), _height);
+		colorHelthBarRect = new Rect (screenPos.x - 25, Screen.height - (screenPos.y + 20), _width * (unitOnTheMap.health / unitOnTheMap.maximumHealth), _height);
 
 		GUI.DrawTexture (backgroundHelthBarRect, gameHUD.skin.GetStyle (_styleName).normal.background);
 		GUI.DrawTexture (colorHelthBarRect, gameHUD.skin.GetStyle (_styleName).active.background);
@@ -49,8 +50,27 @@ public class UnitController : MonoBehaviour {
 
 	}
 
+	void OnMouseUp() 
+	{
+		if (gameHUD.currentTargetSelected != null) 
+		{
+			gameHUD.removeSelect ();
+		} 
+
+		gameHUD.currentTargetSelected = gameObject;
+		circleSelect.SetActive (true);
+		UpdateInfoAboutUnit ();
+		gameHUD.descriptionPanel.SetActive (true);
+
+	}
+
+	public void UpdateInfoAboutUnit()
+	{
+		gameHUD.OnInfo (unitOnTheMap.name, unitOnTheMap.level, 0, unitOnTheMap.armor, unitOnTheMap.health, unitOnTheMap.maximumHealth, false);
+	}
+
 	public void Move (GameObject _point) {
-		transform.position = Vector3.MoveTowards (transform.position, _point.transform.position, this.GameUnit.speed * Time.deltaTime);
+		transform.position = Vector3.MoveTowards (transform.position, _point.transform.position, this.unitOnTheMap.speed * Time.deltaTime);
 	}
 
 	public void Die () {

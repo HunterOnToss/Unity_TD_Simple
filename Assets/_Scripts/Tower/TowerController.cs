@@ -6,19 +6,19 @@ public class TowerController : MonoBehaviour {
 
 
 	public Tower myTower = new Tower ();
+	public GameObject circleSelect;
 
 	private float reload;
-	private int attack;
-	private GameObject target;
 	private GameObject bullet;
 	private GameController gameController;
-
+	private GameHUD gameHUD;
 	private GameObject currentTarger;
 
 
 	void Start () 
 	{
-		gameController = (GameController)GameObject.FindGameObjectWithTag ("GameMode").GetComponent<GameController>();
+		gameController = GameObject.FindGameObjectWithTag ("GameMode").GetComponent<GameController>() as GameController; 
+		gameHUD = GameObject.FindGameObjectWithTag ("GameMode").GetComponent<GameHUD>() as GameHUD;
 	}
 
 	void Update () {
@@ -66,6 +66,25 @@ public class TowerController : MonoBehaviour {
 		bullet.GetComponent<Bullet> ().speed = myTower.bulletSpeed;
 
 		reload = myTower.attackSpeed;
+	}
+
+	void OnMouseUp() 
+	{
+		if (gameHUD.currentTargetSelected != null) 
+		{
+			gameHUD.removeSelect ();
+		} 
+
+		gameHUD.currentTargetSelected = gameObject;
+		circleSelect.SetActive (true);
+		gameHUD.descriptionPanel.SetActive (true);
+		UpdateInfoAboutTower ();
+
+	}
+
+	public void UpdateInfoAboutTower()
+	{
+		gameHUD.OnInfo (myTower.name, myTower.level, myTower.damage, 0, 0, 0, true);
 	}
 
 }

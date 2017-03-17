@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour {
 			if (Vector3.Distance (transform.position, Target.transform.position) >= 0.8f) {
 				transform.position = Vector3.MoveTowards (transform.position, Target.transform.position, speed * Time.deltaTime);
 			} else {
-				Target.GetComponent<UnitController> ().GameUnit.health -= damage;
+				Target.GetComponent<UnitController> ().unitOnTheMap.health -= damage;
 				Destroy (transform.gameObject);
 			}
 			

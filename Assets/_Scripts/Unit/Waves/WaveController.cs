@@ -61,7 +61,7 @@ public class WaveController : MonoBehaviour {
 			if (control.FinishMove || control.isDie) {
 				if (control.isDie) { 
 					countDieUnits++;
-					gameController.gold += control.GameUnit.gold;
+					gameController.gold += control.unitOnTheMap.gold;
 				}
 
 				if (control.FinishMove) {

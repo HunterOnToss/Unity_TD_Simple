@@ -12,7 +12,7 @@ public class BaseUnit {
 	public float maximumHealth = 10;
 	public int armor = 0;
 	public int regeneration = 0;
-
+	public int level = 1;
 	public int gold = 1;
 
 
