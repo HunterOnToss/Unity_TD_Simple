@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour {
 	public int losesUnits = 0;
 
 	public List<GameObject> Zones = new List<GameObject> ();
+	public List<GameObject> towersOnTheMap = new List<GameObject> ();
 	public float TimeSpawnNextUnit = 2.0f;
 	public WaveController waveController;
 

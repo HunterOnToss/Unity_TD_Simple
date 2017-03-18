@@ -25,6 +25,13 @@ public class GameHUD : MonoBehaviour {
 	public Text textArmor;
 	private bool isUpdate;
 
+	//upgrade 
+
+	public GameObject upgradeButton;
+	public Text upgradeText;
+	public GameObject sellButton;
+	public Text sellText;
+
 	//controll
 	private GameController gameController;
 	private TowerController towerController; 
@@ -87,7 +94,10 @@ public class GameHUD : MonoBehaviour {
 			textLevel.text = _lvl;
 			textDamage.text = _damage.ToString();
 			textHealth.text = "";
+
 			damagePanel.SetActive (true);
+			upgradeButton.SetActive (true);
+			sellButton.SetActive (true);
 			armorPanel.SetActive (false);
 		}
 		else 
@@ -97,6 +107,8 @@ public class GameHUD : MonoBehaviour {
 			textArmor.text = _armor.ToString();
 			textHealth.text = _health + " / " + _maxHealth;
 
+			upgradeButton.SetActive (false);
+			sellButton.SetActive (false);
 			damagePanel.SetActive (false);
 			armorPanel.SetActive (true);
 		}
@@ -126,7 +138,9 @@ public class GameHUD : MonoBehaviour {
 		switch(currentTargetSelected.tag) 
 		{
 		case "Tower":
-			towerController.UpdateInfoAboutTower();
+			towerController.UpdateInfoAboutTower ();
+			upgradeText.text = "Upgrade - " + towerController.myTower.upgradeCost;
+			sellText.text = "Sell - "  + towerController.myTower.sellCost;
 			break;
 
 		case "Unit":
@@ -137,5 +151,15 @@ public class GameHUD : MonoBehaviour {
 			Debug.Log ("Update doesn't work, you are forget TAG: TOWER or UNIT");
 			break;
 		}
+	}
+
+	public void Upgrade() 
+	{
+		towerController.Upgrade ();
+	}
+
+	public void Sell()
+	{
+		towerController.Sell ();
 	}
 }

@@ -13,6 +13,9 @@ public class Tower {
 	public float Range = 5;
 
 	public int level = 1;
+	public int cost = 2;
+	public int upgradeCost = 2;
+	public int sellCost = 1;
 
 	public GameObject bullet;
 	public GameObject spawnBullet;

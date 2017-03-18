@@ -87,4 +87,26 @@ public class TowerController : MonoBehaviour {
 		gameHUD.OnInfo (myTower.name, myTower.level, myTower.damage, 0, 0, 0, true);
 	}
 
+	// TODO: make better
+	public void Upgrade() 
+	{
+		if (gameController.gold >= myTower.upgradeCost) 
+		{
+			gameController.gold -= myTower.upgradeCost;
+			myTower.upgradeCost += myTower.upgradeCost / 2;
+			myTower.sellCost = myTower.upgradeCost / 3 + 1;
+			myTower.level++;
+			myTower.damage += myTower.damage / 2;
+		}
+	}
+
+	public void Sell()
+	{
+		gameController.gold += myTower.sellCost;
+		gameController.towersOnTheMap.Remove (gameObject);
+		Destroy (gameObject);
+	}
+
+	// ============================================================================
+
 }
