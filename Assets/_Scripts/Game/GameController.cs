@@ -10,11 +10,15 @@ public class GameController : MonoBehaviour {
 	public List<GameObject> Zones = new List<GameObject> ();
 	public List<GameObject> towersOnTheMap = new List<GameObject> ();
 	public float TimeSpawnNextUnit = 2.0f;
+
 	public WaveController waveController;
+	public GameHUD gameHUD;
 
 	void Start () {
-		waveController = (WaveController)gameObject.GetComponent<WaveController> ();
+		waveController = gameObject.GetComponent<WaveController> ();
 		waveController.target = Zones [0];
+
+		gameHUD = gameObject.GetComponent<GameHUD> ();
 	}
 
 	void LateUpdate () {
@@ -29,5 +33,5 @@ public class GameController : MonoBehaviour {
 		}	
 
 	}
-
+		
 }

@@ -37,6 +37,10 @@ public class GameHUD : MonoBehaviour {
 	private TowerController towerController; 
 	private UnitController unitController;
 
+	//magazine
+
+	public List<Text> textCost = new List<Text>();
+
 
 
 	void Start() 
@@ -162,4 +166,6 @@ public class GameHUD : MonoBehaviour {
 	{
 		towerController.Sell ();
 	}
+
+
 }
