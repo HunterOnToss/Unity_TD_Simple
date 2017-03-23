@@ -102,6 +102,8 @@ public class TowerController : MonoBehaviour {
 
 	public void Sell()
 	{
+		myTower.towerFrame.isBuild = false;
+
 		gameController.gold += myTower.sellCost;
 		gameController.towersOnTheMap.Remove (gameObject);
 		Destroy (gameObject);

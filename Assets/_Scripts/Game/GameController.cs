@@ -9,12 +9,19 @@ public class GameController : MonoBehaviour {
 
 	public List<GameObject> Zones = new List<GameObject> ();
 	public List<GameObject> towersOnTheMap = new List<GameObject> ();
+
+	public List<GameObject> towerFrame = new List<GameObject> ();
+
+	public Shop shop;
+
 	public float TimeSpawnNextUnit = 2.0f;
 
 	public WaveController waveController;
 	public GameHUD gameHUD;
 
 	void Start () {
+		shop = gameObject.GetComponent<Shop> ();
+
 		waveController = gameObject.GetComponent<WaveController> ();
 		waveController.target = Zones [0];
 
@@ -32,6 +39,30 @@ public class GameController : MonoBehaviour {
 			control.Zones = Zones;
 		}	
 
+	}
+
+	public void ShowGround(int _id) 
+	{
+		TowerController tower = shop.shopTowers [_id].GetComponent < TowerController> ();
+
+		if (gold < tower.myTower.cost) {
+			Debug.Log ("Not enought minerals");
+		} else 
+		{
+
+			foreach (GameObject obj in towerFrame) 
+			{
+				if (obj.GetComponent<TowerFrame>().isBuild)
+				{
+					obj.SetActive (false);
+				} 
+				else 
+				{
+					obj.SetActive (true);
+					obj.GetComponent<TowerFrame> ().id = _id;	
+				}
+			}
+		}
 	}
 		
 }

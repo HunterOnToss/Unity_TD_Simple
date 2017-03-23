@@ -17,6 +17,8 @@ public class Tower {
 	public int upgradeCost = 2;
 	public int sellCost = 1;
 
+	public TowerFrame towerFrame;
+
 	public GameObject bullet;
 	public GameObject spawnBullet;
 
