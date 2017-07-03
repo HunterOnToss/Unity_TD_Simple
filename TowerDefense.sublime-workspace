@@ -1,0 +1,289 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Timd",
+				"Time.deltaTime"
+			],
+			[
+				"Seri",
+				"Serializable"
+			],
+			[
+				"Vec",
+				"Vector3"
+			],
+			[
+				"Ve",
+				"Vector3"
+			],
+			[
+				"tra",
+				"Transform.position"
+			],
+			[
+				"euler",
+				"Transform.eulerAngles"
+			],
+			[
+				"Euler",
+				"Quaternion.Euler(x, y, z)"
+			],
+			[
+				"Update",
+				"MonoBehaviour.Update()"
+			],
+			[
+				"Mono",
+				"MonoBehaviour"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Unity3D Build System/Unity.sublime-build",
+					""
+				],
+				[
+					"Packages/Unity3D Build System/Unity.sublime-build",
+					"Clean"
+				]
+			],
+			[
+				"Packages/Unity3D Build System/Unity.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 490.0,
+		"last_filter": "insta",
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"omni",
+				"OmniSharpSublime: Build"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"unity",
+				"Plugin Development: Convert Syntax to .sublime-syntax"
+			]
+		],
+		"width": 593.0
+	},
+	"console":
+	{
+		"height": 162.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/hunter/development/Unity_BuhlishkoTD"
+	],
+	"file_history":
+	[
+		"/C/Users/hunter/development/BuhlishkoTD/Assets/BuhlishkoTD/_Scripts/Tower/TowerControler.boo",
+		"/C/Users/hunter/development/Unity_BuhlishkoTD/Assets/_Scripts/_Utils/NotificationCenter.cs",
+		"/C/Users/hunter/development/Unity_TD_Simple/Assets/_Scripts/Unit/Units/BaseUnit.cs",
+		"/C/Users/hunter/development/BuhlishkoTD/Assets/BuhlishkoTD/_Scripts/Main.boo",
+		"/C/Users/hunter/development/BuhlishkoTD/Assets/BuhlishkoTD/_Scripts/Player/PlayerController.cs",
+		"/C/Users/hunter/development/EscapeFromLostCity/Assets/EscapeFromLostCity/_Scripts/Main.boo",
+		"/C/Users/hunter/development/EscapeFromLostCity/escapefromlostcity_project.sublime-project",
+		"/C/Users/hunter/development/EscapeFromLostCity/Assets/EscapeFromLostCity/_Scripts/Test.cs",
+		"/C/Users/hunter/Downloads/BatteryCollector/SpawnVolume.h",
+		"/C/Users/hunter/Downloads/BatteryCollector/SpawnVolume.cpp",
+		"/C/Users/hunter/Downloads/SpawnVolume.cpp",
+		"/C/Users/hunter/Downloads/BatteryCollector/BatteryCollectorGameMode.h",
+		"/C/Users/hunter/Downloads/BatteryCollector/BatteryCollectorGameMode.cpp",
+		"/C/Users/hunter/Downloads/SpawnVolume.h",
+		"/C/Users/hunter/development/EscapeFromLostCity/Assets/EscapeFromLostCity/Test.cs",
+		"/C/Users/hunter/Documents/Unreal_Projects/Polygon_15/Plugins/UnrealEnginePython/UnrealEnginePython.uplugin",
+		"/C/Users/hunter/development/Hunter Tower Defense/Assets/Scripts/controler.boo",
+		"/C/Users/hunter/development/Hunter Tower Defense/Assets/controler.boo",
+		"/C/Users/hunter/development/Hunter Tower Defense/Assets/Test.cs",
+		"/H/Unity/Polygon/Assets/Test.boo",
+		"/H/Unity/Polygon/sub",
+		"/H/Unity/one/Assets/one.boo",
+		"/C/Users/hunter/development/parkours_1/Assets/Res/_Scripts/SmashController.cs",
+		"/H/Unity/AutoSpa_Salon/Assets/test.boo",
+		"/H/Unity/AutoSpa_Salon/Assets/PythonInterpreter/Examples/MyCustomClass.cs"
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"SetCurrentState",
+			"${project_path:Library}",
+			"<path-to-Unity-folder>"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 33.0
+	},
+	"input":
+	{
+		"height": 43.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 160.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.variable_get":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Unity3D Build System/Unity.sublime-build",
+	"project": "TowerDefense.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 416.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
