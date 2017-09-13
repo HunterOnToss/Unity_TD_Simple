@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
 	public float Speed = 10.0f;
-    public float LimitPositive_X = 10F;
-    public float LimitNegative_X = -24F;
-    public float LimitPositive_Z = 8F;
-    public float LimitNegative_Z = -25F;
+    public float LimitPositiveX = 10F;
+    public float LimitNegativeX = -24F;
+    public float LimitPositiveZ = 8F;
+    public float LimitNegativeZ = -25F;
 
     void Update()
     {
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
     private void MovePlayerCamera()
     {
 
-        if (transform.position.x > LimitNegative_X)
+        if (transform.position.x > LimitNegativeX)
         {
             if (Input.mousePosition.x < 2.0f)
             {
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        if (transform.position.x < LimitPositive_X)
+        if (transform.position.x < LimitPositiveX)
         {
             if (Input.mousePosition.x > Screen.width - 2.0f)
             {
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        if (transform.position.z < LimitPositive_Z)
+        if (transform.position.z < LimitPositiveZ)
         {
             if (Input.mousePosition.y > Screen.height - 2.0f)
             {
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
         }
 
 
-        if (transform.position.z > LimitNegative_Z)
+        if (transform.position.z > LimitNegativeZ)
         {
             if (Input.mousePosition.y < 2.0f)
             {
