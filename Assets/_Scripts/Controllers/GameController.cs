@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour {
 	public int gold = 0;
 	public int losesUnits = 0;
 
-	public List<GameObject> Zones = new List<GameObject> ();
+    public List<GameObject> Zones;
 	public List<GameObject> towersOnTheMap = new List<GameObject> ();
 
 	public List<GameObject> towerFrame = new List<GameObject> ();
@@ -19,7 +19,10 @@ public class GameController : MonoBehaviour {
 	public WaveController waveController;
 	public GameHUD gameHUD;
 
-	void Start () {
+	void Start ()
+	{
+	    Zones = Waypoints.Points;
+
 		shop = gameObject.GetComponent<Shop> ();
 
 		waveController = gameObject.GetComponent<WaveController> ();

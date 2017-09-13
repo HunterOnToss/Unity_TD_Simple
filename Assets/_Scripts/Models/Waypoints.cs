@@ -5,20 +5,20 @@ using UnityEngine;
 public class Waypoints : MonoBehaviour
 {
 
-    public static Transform[] Points;
+    public static List<GameObject> Points;
 
     private void Awake()
     {
-        Points = new Transform[this.transform.childCount];
+        Points = new List<GameObject>();
 
-        for (var i = 0; i < Points.Length; i++)
+        for (var i = 0; i < this.transform.childCount; i++)
         {
-            Points[i] = this.transform.GetChild(i);
+            Points.Add(this.transform.GetChild(i).gameObject);
         }
     }
 
     private void Start()
     {
-        Debug.Log(Points.Length);
+        Debug.Log(Points[Points.Count-1]);
     }
 }
