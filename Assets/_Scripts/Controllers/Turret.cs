@@ -5,12 +5,20 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
+    private Transform _target;
+      
+    [Header("Attributes")]
     public float Range = 15f;
+    public float FireRate = 1f;
+    private float _fireCountdown = 0f;
+
+    [Header("Unity Setup Fields")]
     public string EnemyTag = "Enemy";
     public Transform PartToRotate;
     public float TurnSpeed = 10f;
 
-    private Transform _target;
+    public GameObject BulletPrefab;
+    public Transform FirePoint;
 
 	void Start ()
     {
@@ -22,6 +30,30 @@ public class Turret : MonoBehaviour
 		if (_target == null) return;
 
         MakeRotationToTarget();
+        MakeShot();
+    }
+
+    private void MakeShot()
+    {
+        if (_fireCountdown <= 0)
+        {
+            Shot();
+            _fireCountdown = 1f / FireRate;
+        }
+
+        _fireCountdown -= Time.deltaTime;
+    }
+
+    private void Shot()
+    {
+        var bulletGameObject = Instantiate(BulletPrefab, FirePoint.position, FirePoint.rotation);
+        var bullet = bulletGameObject.GetComponent<Bullet>();
+
+        if (bullet != null)
+        {
+            bullet.Seek(_target);
+        }
+        
     }
 
     private void MakeRotationToTarget()
