@@ -7,9 +7,11 @@ public class TowerFrame : MonoBehaviour
 {
     public Color HoverColor;
 
+    [Header("Optional")]
+    public GameObject Turret;
+
     private Renderer _renderer;
     private Color _startColor;
-    private GameObject _turret;
     private BuildController _buildManager;
 
     void Start()
@@ -19,20 +21,24 @@ public class TowerFrame : MonoBehaviour
         _buildManager = BuildController.InstanceBuildController;
     }
 
+    public Vector3 GetBuildPosition()
+    {
+        return transform.position;
+    }
+
     private void OnMouseDown()
     {
         if (EventSystem.current.IsPointerOverGameObject()) { return; }
-        if (_buildManager.GetTurretToBuild() == null) { return;}
-        if (_turret != null){ return; }
+        if (!_buildManager.CanBuild) { return;}
+        if (Turret != null){ return; }
 
-        var turretToBuild = _buildManager.GetTurretToBuild();
-        _turret = Instantiate(turretToBuild, this.transform.position, this.transform.rotation);
+        _buildManager.BuildTurretOn(this);
     }
 
     private void OnMouseEnter()
     {
         if (EventSystem.current.IsPointerOverGameObject()) { return; }
-        if (_buildManager.GetTurretToBuild() == null) { return; }
+        if (!_buildManager.CanBuild) { return; }
         _renderer.material.color = HoverColor;
     }
 

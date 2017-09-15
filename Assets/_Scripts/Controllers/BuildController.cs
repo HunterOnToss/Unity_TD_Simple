@@ -8,7 +8,9 @@ public class BuildController : MonoBehaviour
     public GameObject StandardTurretPrefab;
     public GameObject MissileLauncherPrefab;
 
-    private GameObject _turretToBuild;
+    private TurretBlueprint _turretToBuild;
+
+    public bool CanBuild { get { return _turretToBuild != null; } }
 
     void Awake()
     {
@@ -19,15 +21,15 @@ public class BuildController : MonoBehaviour
 
         InstanceBuildController = this;
     }
-
-    public GameObject GetTurretToBuild()
-    {
-        return _turretToBuild;
-    }
-
-    public void SetTurretToBuild(GameObject turret)
+    
+    public void SelectTurretToBuild(TurretBlueprint turret)
     {
         _turretToBuild = turret;
     }
 
+    public void BuildTurretOn(TowerFrame towerFrame)
+    {
+        var turret = Instantiate(_turretToBuild.Prefab, towerFrame.GetBuildPosition(), Quaternion.identity);
+        towerFrame.Turret = turret;
+    }
 }
