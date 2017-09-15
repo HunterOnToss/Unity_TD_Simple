@@ -29,7 +29,17 @@ public class BuildController : MonoBehaviour
 
     public void BuildTurretOn(TowerFrame towerFrame)
     {
+        if (PlayerStats.Money < _turretToBuild.Cost)
+        {
+            Debug.Log("Not enough Money");
+            return;
+        }
+
+        PlayerStats.Money -= _turretToBuild.Cost;
+
         var turret = Instantiate(_turretToBuild.Prefab, towerFrame.GetBuildPosition(), Quaternion.identity);
         towerFrame.Turret = turret;
+
+        Debug.Log("Turret build! money left:" + PlayerStats.Money);
     }
 }
