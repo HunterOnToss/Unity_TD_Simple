@@ -5,6 +5,9 @@ using UnityEngine;
 public class EnenmyController : MonoBehaviour {
 
     public float Speed = 9f;
+    public int Health = 119;
+    public int ValueForDie = 50;
+    public GameObject DeathEffect;
 
     private Transform _target;
     private int _wavepointIndex;
@@ -17,10 +20,20 @@ public class EnenmyController : MonoBehaviour {
 
     void Update()
     {
-        _checkIsDie();
+        _checkIsEndPath();
 
         if (_isDie) { Die();}
         else { MoveToPoints();}
+    }
+
+    public void TakeDamage(int amount)
+    {
+        Health -= amount;
+
+        if (Health <= 0)
+        {
+            _isDie = true;
+        }
     }
 
     private void MoveToPoints()
@@ -43,7 +56,7 @@ public class EnenmyController : MonoBehaviour {
         }
     }
 
-    private void _checkIsDie()
+    private void _checkIsEndPath()
     {
         if (_wavepointIndex >= Waypoints.Points.Count)
         {
@@ -53,6 +66,12 @@ public class EnenmyController : MonoBehaviour {
 
     private void Die()
     {
+        PlayerStats.Money += ValueForDie;
+        PlayerStats.Lives--;
+
+        var effect = Instantiate(DeathEffect, transform.position, Quaternion.identity);
+
+        Destroy(effect, 5f);
         Destroy(this.gameObject);
     }
 }

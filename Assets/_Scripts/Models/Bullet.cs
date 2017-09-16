@@ -7,7 +7,9 @@ public class Bullet : MonoBehaviour
     private Transform _target;
 
     public float ExplosionRadius;
+    public int Damage = 50;
     public float Speed = 75f;
+    
     public GameObject ImpactEffect;
 
 	void Update ()
@@ -43,7 +45,7 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            Damage(_target);
+            MakeDamage(_target);
         }
 
         Destroy(this.gameObject);
@@ -56,14 +58,19 @@ public class Bullet : MonoBehaviour
         {
             if (collider.CompareTag("Enemy"))
             {
-                Damage(collider.transform);
+                MakeDamage(collider.transform);
             }
         }
     }
 
-    private static void Damage(Transform enemy)
+    private void MakeDamage(Transform enemy)
     {
-        Destroy(enemy.gameObject);
+        var e = enemy.GetComponent<EnenmyController>();
+
+        if (e != null)
+        {
+            e.TakeDamage(Damage);
+        }
     }
 
     public void Seek(Transform target)
