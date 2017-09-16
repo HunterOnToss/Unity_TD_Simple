@@ -11,6 +11,7 @@ public class BuildController : MonoBehaviour
     private TurretBlueprint _turretToBuild;
 
     public bool CanBuild { get { return _turretToBuild != null; } }
+    public bool HasMoney { get { return PlayerStats.Money >= _turretToBuild.Cost; } }
 
     void Awake()
     {

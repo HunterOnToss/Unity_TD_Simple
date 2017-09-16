@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class TowerFrame : MonoBehaviour
 {
     public Color HoverColor;
+    public Color NotEnoughMoneyColor = Color.red;
 
     [Header("Optional")]
     public GameObject Turret;
@@ -39,7 +40,15 @@ public class TowerFrame : MonoBehaviour
     {
         if (EventSystem.current.IsPointerOverGameObject()) { return; }
         if (!_buildManager.CanBuild) { return; }
-        _renderer.material.color = HoverColor;
+
+        if (_buildManager.HasMoney)
+        {
+            _renderer.material.color = HoverColor;
+        }
+        else
+        {
+            _renderer.material.color = NotEnoughMoneyColor;
+        }
     }
 
     private void OnMouseExit()
