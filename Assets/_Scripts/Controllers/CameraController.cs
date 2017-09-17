@@ -20,6 +20,13 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+
+        if (GameController.GameIsOver)
+        {
+            this.enabled = false;
+            return;
+        }
+
         LockMovement();
         if (!_doMovement) return;
 
