@@ -17,12 +17,6 @@ public class GameController : MonoBehaviour
     void Update ()
     {
         if (GameIsOver) return;
-
-        if (Input.GetKeyDown("e"))
-        {
-            EndGame();
-        }
-
         if (PlayerStats.Lives <= 0) { EndGame(); }
     }
 
