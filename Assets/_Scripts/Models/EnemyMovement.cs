@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[RequireComponent(typeof(EnemyController))]
 public class EnemyMovement : MonoBehaviour {
 
     private Transform _target;
     private int _wavepointIndex;
-    private int Speed = 0;
+
+    private EnemyController _enemyController;
 
     void Start()
     {
+        _enemyController = this.GetComponent<EnemyController>();
         _target = Waypoints.Points[0].transform;
     }
 
@@ -18,12 +20,14 @@ public class EnemyMovement : MonoBehaviour {
     {
         _checkIsEndPath();
         MoveToPoints();
+
+        _enemyController.Speed = _enemyController.StartSpeed;
     }
 
     private void MoveToPoints()
     {
         var dir = _target.position - transform.position;
-        transform.Translate(dir.normalized * Speed * Time.deltaTime, Space.World);
+        transform.Translate(dir.normalized * _enemyController.Speed * Time.deltaTime, Space.World);
 
         if (Vector3.Distance(transform.position, _target.position) <= 0.2f)
         {
@@ -44,7 +48,7 @@ public class EnemyMovement : MonoBehaviour {
     {
         if (_wavepointIndex >= Waypoints.Points.Count)
         {
-            //_isDie = true;
+            _enemyController.IsDie = true;
         }
     }
 }

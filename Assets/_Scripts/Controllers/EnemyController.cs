@@ -2,18 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnenmyController : MonoBehaviour {
+public class EnemyController : MonoBehaviour
+{
+    public float StartSpeed = 9f;
 
-    public float Speed = 9f;
+    [HideInInspector]
+    public float Speed;
+
     public float Health = 119;
     public int Worth = 50;
     public GameObject DeathEffect;
+    public bool IsDie;
 
-    private bool _isDie;
+    void Start()
+    {
+        Speed = StartSpeed;
+    }
 
     void Update()
     {
-        if (_isDie) { Die();}
+        if (IsDie) { Die();}
     }
 
     public void TakeDamage(float amount)
@@ -22,9 +30,15 @@ public class EnenmyController : MonoBehaviour {
 
         if (Health <= 0)
         {
-            _isDie = true;
+            IsDie = true;
         }
     }
+
+    public void Slow(float slowAmount)
+    {
+        Speed = StartSpeed * (1f - slowAmount);
+    }
+
     private void Die()
     {
         PlayerStats.Money += Worth;
