@@ -7,17 +7,22 @@ public class Turret : MonoBehaviour
 {
     private Transform _target;
       
-    [Header("Attributes")]
+    [Header("General")]
     public float Range = 15f;
-    public float FireRate = 1f;
-    private float _fireCountdown = 0f;
 
+    [Header("Use Bullets (default)")]
+    public GameObject BulletPrefab;
+    public float FireRate = 1f;
+    private float _fireCountdown;
+
+    [Header("Use Laser")]
+    public bool UseLaser;
+    public LineRenderer LaserLineRenderer;
+    
     [Header("Unity Setup Fields")]
     public string EnemyTag = "Enemy";
     public Transform PartToRotate;
     public float TurnSpeed = 10f;
-
-    public GameObject BulletPrefab;
     public Transform FirePoint;
 
 	void Start ()
@@ -27,10 +32,41 @@ public class Turret : MonoBehaviour
 	
 	void Update ()
     {
-		if (_target == null) return;
+        if (_target == null)
+        {
+            if (UseLaser)
+            {
+                if (LaserLineRenderer.enabled)
+                {
+                    LaserLineRenderer.enabled = false;
+                }
 
-        MakeRotationToTarget();
-        MakeShot();
+            }
+            return;
+        }
+        
+
+        LockOnTarget();
+
+        if (UseLaser)
+        {
+            Laser();
+        }
+        else
+        {
+            MakeShot();
+        }
+    }
+
+    private void Laser()
+    {
+        if (!LaserLineRenderer.enabled)
+        {
+            LaserLineRenderer.enabled = true;
+        }
+
+        LaserLineRenderer.SetPosition(0, FirePoint.position);
+        LaserLineRenderer.SetPosition(1, _target.position);
     }
 
     private void MakeShot()
@@ -56,7 +92,7 @@ public class Turret : MonoBehaviour
         
     }
 
-    private void MakeRotationToTarget()
+    private void LockOnTarget()
     {
         var dir = _target.position - transform.position;
         var lookRotation = Quaternion.LookRotation(dir);
