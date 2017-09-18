@@ -42,7 +42,6 @@ public class EnemyController : MonoBehaviour
     private void Die()
     {
         PlayerStats.Money += Worth;
-        PlayerStats.Lives--;
 
         var effect = Instantiate(DeathEffect, transform.position, Quaternion.identity);
 

@@ -30,8 +30,12 @@ public class TowerFrame : MonoBehaviour
     private void OnMouseDown()
     {
         if (EventSystem.current.IsPointerOverGameObject()) { return; }
-        if (!_buildManager.CanBuild) { return;}
-        if (Turret != null){ return; }
+        if (Turret != null)
+        {
+            _buildManager.SelectTowerFrame(this); 
+            return;
+        }
+        if (!_buildManager.CanBuild) { return; }
 
         _buildManager.BuildTurretOn(this);
     }

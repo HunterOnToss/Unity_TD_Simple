@@ -48,6 +48,7 @@ public class EnemyMovement : MonoBehaviour {
     {
         if (_wavepointIndex >= Waypoints.Points.Count)
         {
+            PlayerStats.Lives--;
             _enemyController.IsDie = true;
         }
     }

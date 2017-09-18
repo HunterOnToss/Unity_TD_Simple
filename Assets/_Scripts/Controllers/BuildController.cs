@@ -6,8 +6,10 @@ public class BuildController : MonoBehaviour
 {
     public static BuildController InstanceBuildController;
     public GameObject BuildEffect;
+    public NodeUI SelectedNodeUI;
 
     private TurretBlueprint _turretToBuild;
+    private TowerFrame _selectedTowerFrame;
 
     public bool CanBuild { get { return _turretToBuild != null; } }
     public bool HasMoney { get { return PlayerStats.Money >= _turretToBuild.Cost; } }
@@ -25,6 +27,8 @@ public class BuildController : MonoBehaviour
     public void SelectTurretToBuild(TurretBlueprint turret)
     {
         _turretToBuild = turret;
+
+        DeselectNode();
     }
 
     public void BuildTurretOn(TowerFrame towerFrame)
@@ -43,5 +47,25 @@ public class BuildController : MonoBehaviour
         var effect = Instantiate(BuildEffect, towerFrame.GetBuildPosition(), Quaternion.identity);
         Destroy(effect, 5f);
         Debug.Log("Turret build! money left:" + PlayerStats.Money);
+    }
+
+    public void SelectTowerFrame(TowerFrame towerFrame)
+    {
+        if (_selectedTowerFrame == towerFrame)
+        {
+            DeselectNode();
+            return;
+        }
+
+        _selectedTowerFrame = towerFrame;
+        _turretToBuild = null;
+
+        SelectedNodeUI.SetTarget(_selectedTowerFrame);
+    }
+
+    private void DeselectNode()
+    {
+        _selectedTowerFrame = null;
+        SelectedNodeUI.Hide();
     }
 }
