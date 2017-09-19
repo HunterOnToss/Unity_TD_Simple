@@ -69,6 +69,17 @@ public class TowerFrame : MonoBehaviour
         Destroy(effect, 5f);
     }
 
+    public void SellTurret()
+    {
+        PlayerStats.Money += TurretBlueprintForFrame.GetSellAmount();
+
+        var effect = Instantiate(_buildManager.SellEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 5f);
+
+        Destroy(Turret);
+        TurretBlueprintForFrame = null;
+    }
+
     private void OnMouseDown()
     {
         if (EventSystem.current.IsPointerOverGameObject()) { return; }

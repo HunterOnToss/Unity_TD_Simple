@@ -6,7 +6,8 @@ public class BuildController : MonoBehaviour
 {
     public static BuildController InstanceBuildController;
     public GameObject BuildEffect;
-    public NodeUI SelectedNodeUI;
+    public GameObject SellEffect;
+    public NodeUI SelectedNodeUi;
 
     private TurretBlueprint _turretToBuild;
     private TowerFrame _selectedTowerFrame;
@@ -42,7 +43,7 @@ public class BuildController : MonoBehaviour
         _selectedTowerFrame = towerFrame;
         _turretToBuild = null;
 
-        SelectedNodeUI.SetTarget(_selectedTowerFrame);
+        SelectedNodeUi.SetTarget(_selectedTowerFrame);
     }
 
     public TurretBlueprint GetTurretToBuild()
@@ -53,6 +54,6 @@ public class BuildController : MonoBehaviour
     public void DeselectNode()
     {
         _selectedTowerFrame = null;
-        SelectedNodeUI.Hide();
+        SelectedNodeUi.Hide();
     }
 }

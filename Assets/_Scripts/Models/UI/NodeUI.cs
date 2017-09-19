@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class NodeUI : MonoBehaviour
 {
     public GameObject UI;
-
+    public Text SellAmount;
     public Text UpgradeCost;
     public Button UpgradeButton;
 
@@ -27,6 +27,7 @@ public class NodeUI : MonoBehaviour
             UpgradeButton.interactable = false;
         }
 
+        SellAmount.text = "$ " + _target.TurretBlueprintForFrame.GetSellAmount();
         transform.position = _target.GetBuildPosition();
 
         UI.SetActive(true);
@@ -42,4 +43,11 @@ public class NodeUI : MonoBehaviour
         _target.UpgradeTurret();
         BuildController.InstanceBuildController.DeselectNode();
     }
+
+    public void Sell()
+    {
+        _target.SellTurret();
+        BuildController.InstanceBuildController.DeselectNode();
+    }
+
 }
