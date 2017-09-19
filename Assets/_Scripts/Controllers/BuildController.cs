@@ -30,25 +30,7 @@ public class BuildController : MonoBehaviour
 
         DeselectNode();
     }
-
-    public void BuildTurretOn(TowerFrame towerFrame)
-    {
-        if (PlayerStats.Money < _turretToBuild.Cost)
-        {
-            Debug.Log("Not enough Money");
-            return;
-        }
-
-        PlayerStats.Money -= _turretToBuild.Cost;
-
-        var turret = Instantiate(_turretToBuild.Prefab, towerFrame.GetBuildPosition(), Quaternion.identity);
-        towerFrame.Turret = turret;
-
-        var effect = Instantiate(BuildEffect, towerFrame.GetBuildPosition(), Quaternion.identity);
-        Destroy(effect, 5f);
-        Debug.Log("Turret build! money left:" + PlayerStats.Money);
-    }
-
+    
     public void SelectTowerFrame(TowerFrame towerFrame)
     {
         if (_selectedTowerFrame == towerFrame)
@@ -63,7 +45,12 @@ public class BuildController : MonoBehaviour
         SelectedNodeUI.SetTarget(_selectedTowerFrame);
     }
 
-    private void DeselectNode()
+    public TurretBlueprint GetTurretToBuild()
+    {
+        return _turretToBuild;
+    }
+
+    public void DeselectNode()
     {
         _selectedTowerFrame = null;
         SelectedNodeUI.Hide();

@@ -8,8 +8,10 @@ public class TowerFrame : MonoBehaviour
     public Color HoverColor;
     public Color NotEnoughMoneyColor = Color.red;
 
-    [Header("Optional")]
-    public GameObject Turret;
+    //[Header("Optional")]
+    [HideInInspector] public GameObject Turret;
+    [HideInInspector] public TurretBlueprint TurretBlueprintForFrame;
+    [HideInInspector] public bool IsUpgraded;
 
     private Renderer _renderer;
     private Color _startColor;
@@ -27,6 +29,46 @@ public class TowerFrame : MonoBehaviour
         return transform.position;
     }
 
+    public void UpgradeTurret()
+    {
+        if (PlayerStats.Money < TurretBlueprintForFrame.UpgradeCost)
+        {
+            Debug.Log("Not enough Money to upgrade");
+            return;
+        }
+
+        PlayerStats.Money -= TurretBlueprintForFrame.UpgradeCost;
+
+        Destroy(Turret);
+
+        var turret = Instantiate(TurretBlueprintForFrame.UpgradePrefab, GetBuildPosition(), Quaternion.identity);
+        Turret = turret;
+
+        var effect = Instantiate(_buildManager.BuildEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 5f);
+
+        IsUpgraded = true;
+    }
+
+    private void BuildTurret(TurretBlueprint turretToBuild)
+    {
+        if (PlayerStats.Money < turretToBuild.Cost)
+        {
+            Debug.Log("Not enough Money");
+            return;
+        }
+
+        PlayerStats.Money -= turretToBuild.Cost;
+
+        var turret = Instantiate(turretToBuild.Prefab, GetBuildPosition(), Quaternion.identity);
+        Turret = turret;
+
+        TurretBlueprintForFrame = turretToBuild;
+
+        var effect = Instantiate(_buildManager.BuildEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 5f);
+    }
+
     private void OnMouseDown()
     {
         if (EventSystem.current.IsPointerOverGameObject()) { return; }
@@ -37,7 +79,7 @@ public class TowerFrame : MonoBehaviour
         }
         if (!_buildManager.CanBuild) { return; }
 
-        _buildManager.BuildTurretOn(this);
+        BuildTurret(_buildManager.GetTurretToBuild());
     }
 
     private void OnMouseEnter()
