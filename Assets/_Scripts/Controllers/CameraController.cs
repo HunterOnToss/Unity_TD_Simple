@@ -12,7 +12,6 @@ public class CameraController : MonoBehaviour
     public float LimitPositiveY = 12f;
     public float LimitNegativeY = 4f;
 
-    private bool _doMovement = true;
     private enum Coordinate
     {
         X, Y, Z
@@ -27,9 +26,6 @@ public class CameraController : MonoBehaviour
             return;
         }
 
-        LockMovement();
-        if (!_doMovement) return;
-
         ZoomPlayerCamera();
         MovePlayerCamera();
         ScrollPlayerCamera();
@@ -43,11 +39,6 @@ public class CameraController : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, LimitNegativeY, LimitPositiveY);
 
         this.transform.position = pos;
-    }
-
-    private void LockMovement()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape)) { _doMovement = !_doMovement; }
     }
 
     private void MovePlayerCamera()
