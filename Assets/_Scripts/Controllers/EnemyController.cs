@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -9,13 +10,19 @@ public class EnemyController : MonoBehaviour
     [HideInInspector]
     public float Speed;
 
-    public float Health = 119;
+    public float StartHealth = 119;
+    private float _currentHealth;
+   
     public int Worth = 50;
     public GameObject DeathEffect;
     public bool IsDie;
 
+    [Header("Unity Stuff")]
+    public Image HealthBar;
+
     void Start()
     {
+        _currentHealth = StartHealth;
         Speed = StartSpeed;
     }
 
@@ -26,9 +33,10 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        Health -= amount;
+        _currentHealth -= amount;
+        HealthBar.fillAmount = _currentHealth / StartHealth;
 
-        if (Health <= 0)
+        if (_currentHealth <= 0)
         {
             IsDie = true;
         }
