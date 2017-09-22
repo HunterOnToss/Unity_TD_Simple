@@ -6,8 +6,7 @@ public class GameController : MonoBehaviour
 {
 
     public static bool GameIsOver;
-
-    public GameObject GameOverUI;
+    public GameObject GameOverUi;
 
     void Start()
     {
@@ -23,6 +22,6 @@ public class GameController : MonoBehaviour
     private void EndGame()
     {
         GameIsOver = true;
-        GameOverUI.SetActive(true);
+        GameOverUi.SetActive(true);
     }
 }
