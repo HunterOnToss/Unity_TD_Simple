@@ -49,6 +49,7 @@ public class EnemyController : MonoBehaviour
 
     private void Die()
     {
+        WaveSpawner.EnemiesAlive--;
         PlayerStats.Money += Worth;
 
         var effect = Instantiate(DeathEffect, transform.position, Quaternion.identity);
