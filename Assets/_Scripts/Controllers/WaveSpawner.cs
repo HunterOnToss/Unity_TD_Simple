@@ -8,12 +8,12 @@ public class WaveSpawner : MonoBehaviour
     public static int EnemiesAlive;
 
     public Wave[] Waves;
-
+    public GameController TdGameController;
     public Transform SpawnLocation;
     public float TimeBetweenWaves = 5f;
     public Text WaveCountDownText;
 
-    private float _countdown = 2f;
+    private float _countdown = 5f;
     private int _waveIndex;
 
     void Update()
@@ -31,7 +31,6 @@ public class WaveSpawner : MonoBehaviour
         _countdown -= Time.deltaTime;
         _countdown = Mathf.Clamp(_countdown, 0f, Mathf.Infinity);
 
-        //WaveCountDownText.text = Mathf.Floor(_countdown).ToString();
         WaveCountDownText.text = string.Format("{0:00.00}", _countdown);
     }
 
@@ -40,19 +39,19 @@ public class WaveSpawner : MonoBehaviour
         PlayerStats.Rounds++;
 
         var wave = Waves[_waveIndex];
+        EnemiesAlive = wave.EnemyCount;
 
         for (var i = 0; i < wave.EnemyCount; i++)
         {
             SpawnEnemy(wave.EnemyPrefab);
             yield return new WaitForSeconds(1f / wave.RateBetweenSpawn);
-            //yield return new WaitForSeconds(wave.RateBetweenSpawn);
         }
 
         _waveIndex++;
 
         if (_waveIndex == Waves.Length)
         {
-            Debug.Log("Level WoN");
+            TdGameController.WinLevel();
             this.enabled = false;
         }
     }
@@ -60,6 +59,6 @@ public class WaveSpawner : MonoBehaviour
     private void SpawnEnemy(GameObject enemy)
     {
         Instantiate(enemy, SpawnLocation.position, SpawnLocation.rotation);
-        EnemiesAlive++;
     }
+
 }
