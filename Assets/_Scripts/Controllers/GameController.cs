@@ -7,9 +7,8 @@ public class GameController : MonoBehaviour
 
     public static bool GameIsOver;
     public GameObject GameOverUi;
-    public string NextLevel = "Polygon";
-    public int LevelToUnlock = 2;
     public SceneFader TdSceneFader;
+    public GameObject CompleteLevelUI;
 
     void Start()
     {
@@ -24,9 +23,8 @@ public class GameController : MonoBehaviour
 
     public void WinLevel()
     {
-        Debug.Log("Win!");
-        PlayerPrefs.SetInt("LevelReached", LevelToUnlock);
-        TdSceneFader.FadeTo(NextLevel);
+        GameIsOver = true;
+        CompleteLevelUI.SetActive(true);
     }
 
     private void EndGame()

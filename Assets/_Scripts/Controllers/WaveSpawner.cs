@@ -18,8 +18,13 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
-        // it doesn't work, if enemy die so fast
         if (EnemiesAlive > 0) { return; }
+
+        if (_waveIndex == Waves.Length)
+        {
+            TdGameController.WinLevel();
+            this.enabled = false;
+        }
 
         if (_countdown <= 0f)
         {
@@ -49,11 +54,6 @@ public class WaveSpawner : MonoBehaviour
 
         _waveIndex++;
 
-        if (_waveIndex == Waves.Length)
-        {
-            TdGameController.WinLevel();
-            this.enabled = false;
-        }
     }
 
     private void SpawnEnemy(GameObject enemy)

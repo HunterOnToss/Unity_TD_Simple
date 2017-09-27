@@ -15,7 +15,7 @@ public class EnemyController : MonoBehaviour
    
     public int Worth = 50;
     public GameObject DeathEffect;
-    public bool IsDie;
+    public bool IsDead;
 
     [Header("Unity Stuff")]
     public Image HealthBar;
@@ -28,7 +28,7 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if (IsDie) { Die();}
+        if (IsDead) { Die();}
     }
 
     public void TakeDamage(float amount)
@@ -38,7 +38,7 @@ public class EnemyController : MonoBehaviour
 
         if (_currentHealth <= 0)
         {
-            IsDie = true;
+            IsDead = true;
         }
     }
 
