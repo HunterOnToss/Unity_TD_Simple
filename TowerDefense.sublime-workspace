@@ -67,26 +67,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "/C/Users/hunter/development/TheProgrammer/Assets/_Scripts/MainMenuController.boo",
-			"settings":
-			{
-				"buffer_size": 773,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "import System\nimport UnityEngine\n\n\n[System.Serializable]\nclass BaseUnit():\n\n\tpublic Name = \"Base Unit\"\n\tpublic Health = 10.0\n\tpublic MaximumHealth = 10.0\n\tpublic Armor = 0\n\tpublic Regeneration = 0\n\tpublic Level = 0\n\tpublic Gold = 0\n\tpublic Speed = 0\n\n\t",
-			"file": "Assets/_Scripts/Unit/Units/BaseUnit.boo",
-			"file_size": 275,
-			"file_write_time": 131435438909865304,
-			"settings":
-			{
-				"buffer_size": 252,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -148,7 +128,7 @@
 				"Plugin Development: Convert Syntax to .sublime-syntax"
 			]
 		],
-		"width": 593.0
+		"width": 609.0
 	},
 	"console":
 	{
@@ -173,6 +153,10 @@
 	],
 	"file_history":
 	[
+		"/C/Users/hunter/development/TheProgrammer/Assets/_Scripts/MainMenuController.boo",
+		"/C/Users/hunter/development/Unity_BuhlishkoTD/Assets/_Scripts/Unit/Units/BaseUnit.boo",
+		"/C/Program Files/Blender Foundation/Blender/doc/refresh_python_api",
+		"/C/Users/hunter/Downloads/ren/renpy-6.99.12.4-sdk/renpy.py",
 		"/C/Users/hunter/development/TheProgrammer/Assets/Standard Assets/Scripts/NotificationCenter.cs",
 		"/C/Users/hunter/development/TheProgrammer/Assets/two.cs",
 		"/C/Users/hunter/development/TheProgrammer2/Assets/_Scripts/MainMenuController.boo",
@@ -183,7 +167,6 @@
 		"/C/Users/hunter/development/Unity_BuhlishkoTD/Assets/_Scripts/Unit/Units/SimpleUnit.boo",
 		"/C/Users/hunter/development/Unity_BuhlishkoTD/Assets/_Scripts/BuildTower/TowerFrame.cs",
 		"/C/Users/hunter/development/Unity_BuhlishkoTD/Assets/_Scripts/Unit/Units/BaseUnit.cs",
-		"/C/Users/hunter/development/Unity_BuhlishkoTD/Assets/_Scripts/Unit/Units/BaseUnit.boo",
 		"/C/Users/hunter/development/Unity_BuhlishkoTD/Assets/_Scripts/Unit/Units/Example1.boo",
 		"/C/Users/hunter/development/Unity_BuhlishkoTD/Assets/_Scripts/BuildTower/TowerFrame.boo",
 		"/C/Users/hunter/development/Unity_BuhlishkoTD/Assets/_Scripts/_Utils/Example.boo",
@@ -215,7 +198,7 @@
 	],
 	"find":
 	{
-		"height": 33.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -249,73 +232,14 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "/C/Users/hunter/development/TheProgrammer/Assets/_Scripts/MainMenuController.boo",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 773,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								505,
-								505
-							]
-						],
-						"settings":
-						{
-							"apply_syntax_touched": true,
-							"syntax": "Packages/Boo/Boo.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "Assets/_Scripts/Unit/Units/BaseUnit.boo",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 252,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								102,
-								102
-							]
-						],
-						"settings":
-						{
-							"apply_syntax_touched": true,
-							"syntax": "Packages/Boo/Boo.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 92.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 33.0
+		"height": 35.0
 	},
 	"input":
 	{
@@ -360,7 +284,7 @@
 	"project": "TowerDefense.sublime-project",
 	"replace":
 	{
-		"height": 62.0
+		"height": 65.0
 	},
 	"save_all_on_build": true,
 	"select_file":

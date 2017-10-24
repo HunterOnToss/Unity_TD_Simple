@@ -1,14 +1,16 @@
-﻿using System;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
     public float ScrollSpeed = 15f;
     public float Speed = 10.0f;
+
     public float LimitPositiveX = 10f;
     public float LimitNegativeX = -24f;
+
     public float LimitPositiveZ = 8f;
     public float LimitNegativeZ = -25f;
+
     public float LimitPositiveY = 12f;
     public float LimitNegativeY = 4f;
 
@@ -16,6 +18,9 @@ public class CameraController : MonoBehaviour
     {
         X, Y, Z
     }
+
+
+
 
     void Update()
     {
@@ -51,8 +56,15 @@ public class CameraController : MonoBehaviour
 
     private void ZoomPlayerCamera()
     {
-        if (Input.GetKey(KeyCode.W)) { MakeLimitCoordinate(Coordinate.Y, 1, LimitNegativeY, LimitPositiveY); }
-        if (Input.GetKey(KeyCode.S)) { MakeLimitCoordinate(Coordinate.Y, -1, LimitNegativeY, LimitPositiveY); }
+        if (Input.GetKey(KeyCode.W))
+        {
+            MakeLimitCoordinate(Coordinate.Y, 1, LimitNegativeY, LimitPositiveY);
+        }
+
+        if (Input.GetKey(KeyCode.S)) 
+        { 
+            MakeLimitCoordinate(Coordinate.Y, -1, LimitNegativeY, LimitPositiveY); 
+        }
     }
 
     private void MakeLimitCoordinate(Coordinate nameCoordinate, int forward, float min, float max)
